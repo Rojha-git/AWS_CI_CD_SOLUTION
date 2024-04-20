@@ -34,6 +34,8 @@ Before you begin, make sure you have the following prerequisites:
 
 ```bash
 
+git clone https://github.com/Rojha-git/AWS_CI_CD_SOLUTION.git
+
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <account-id>.dkr.ecr.us-east-1.amazonaws.com
 docker build -t nodejs-server-demo-private .
 docker push <account-id>.dkr.ecr.us-east-1.amazonaws.com/nodejs-server-demo-private:latest
@@ -58,11 +60,13 @@ docker push <account-id>.dkr.ecr.us-east-1.amazonaws.com/nodejs-server-demo-priv
    ![CODE_COMMIT](https://github.com/Rojha-git/AWS_CI_CD_SOLUTION/blob/main/images/Capture5.PNG)
    
 
-9. need to create an project under code-bulid which will use buildsec.yml file for building the application.
+9. need to create an project under code-bulid which will use buildspec.yml file from code-commit for building the application.
+    
 
    ![Code_Build](https://github.com/Rojha-git/AWS_CI_CD_SOLUTION/blob/main/images/Capture8.PNG)
 
-11. We have to create an code-pipeline which will contain all the stages like it will use code-commit, code-build and code-deploy to this CI-CD solution, here code deploy will deploy your application to provided target like ECS cluster.
+10. We have to create an code-pipeline which will contain all the stages like it will use code-commit, code-build and code-deploy to this CI-CD solution, here code deploy will deploy your application to provided target like ECS cluster.
+During code-pipeline creation have to provide the values for the env_variable that we are using under buildspec.yaml
 
 
   ![nnfff](https://github.com/Rojha-git/AWS_CI_CD_SOLUTION/blob/main/images/Capture6.PNG)
@@ -75,9 +79,11 @@ docker push <account-id>.dkr.ecr.us-east-1.amazonaws.com/nodejs-server-demo-priv
    ## finally the application will be looks like below :
 
 
-![f](https://github.com/Rojha-git/AWS_CI_CD_SOLUTION/blob/main/images/Capture10.PNG
+![f](https://github.com/Rojha-git/AWS_CI_CD_SOLUTION/blob/main/images/Capture10.PNG)
 
+for video plese refer below link :
 
+-- https://www.youtube.com/watch?v=knFabwOn1JE&t=694s
 
 
     
