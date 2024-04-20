@@ -29,18 +29,31 @@ Before you begin, make sure you have the following prerequisites:
 
 
 4. Clone the git repo on your ec2 instance and after that you need to run the command to authenticate ECR, build and push the docker image to ECR registery.
+   
+## Commands:
+
+```bash
+
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <account-id>.dkr.ecr.us-east-1.amazonaws.com
+docker build -t nodejs-server-demo-private .
+docker push <account-id>.dkr.ecr.us-east-1.amazonaws.com/nodejs-server-demo-private:latest
+
+```
 
    ![ECR-IMAGE](https://github.com/Rojha-git/AWS_CI_CD_SOLUTION/blob/main/images/ECR_image.PNG)
+
+   
    ![ECR-IMAGE](https://github.com/Rojha-git/AWS_CI_CD_SOLUTION/blob/main/images/Capture1.PNG)
 
 6. Need to create an ecs cluster, task defination using above ECR where we already pushed the docker image, after that we need to create service to expose the application in load balancer mode, which will provide an dns to us and we can expose the application by that url.
 
    ![ECS_IMAGE](https://github.com/Rojha-git/AWS_CI_CD_SOLUTION/blob/main/images/Capture2.PNG)
+   
 
    ![ECS_IMAGE](https://github.com/Rojha-git/AWS_CI_CD_SOLUTION/blob/main/images/Capture3.PNG)
 
 
-7. Create AWS-CodeCommit repo and connect this repo using ec2 instance and push the content to codecommit repo so that we can use it in AWS-Codepipeline, for pushing the content you have to authenticate the aws-codecommit by ec2 using access token which you have to genearte from IAM section.
+8. Create AWS-CodeCommit repo and connect this repo using ec2 instance and push the content to codecommit repo so that we can use it in AWS-Codepipeline, for pushing the content you have to authenticate the aws-codecommit by ec2 using access token which you have to genearte from IAM section.
 
    ![CODE_COMMIT](https://github.com/Rojha-git/AWS_CI_CD_SOLUTION/blob/main/images/Capture5.PNG)
    
@@ -50,12 +63,19 @@ Before you begin, make sure you have the following prerequisites:
    ![Code_Build](https://github.com/Rojha-git/AWS_CI_CD_SOLUTION/blob/main/images/Capture8.PNG)
 
 11. We have to create an code-pipeline which will contain all the stages like it will use code-commit, code-build and code-deploy to this CI-CD solution, here code deploy will deploy your application to provided target like ECS cluster.
+
+
   ![nnfff](https://github.com/Rojha-git/AWS_CI_CD_SOLUTION/blob/main/images/Capture6.PNG)
+
+  
   ![f](https://github.com/Rojha-git/AWS_CI_CD_SOLUTION/blob/main/images/Capture7.PNG)
 
    
      
-   
+   ## finally the application will be looks like below :
+
+
+![f](https://github.com/Rojha-git/AWS_CI_CD_SOLUTION/blob/main/images/Capture10.PNG
 
 
 
