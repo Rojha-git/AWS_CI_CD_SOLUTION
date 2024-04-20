@@ -1,6 +1,8 @@
 # AWS_CI_CD_SOLUTION
 it's an common solution for Applications/Microservices on AWS Cloud
 
+![f](https://github.com/Rojha-git/AWS_CI_CD_SOLUTION/blob/main/images/AWS_CI_CD.PNG)
+
 ## Introduction
 This repository provides a step-by-step guide for building and deploying a Simple application using Node JS. The guide covers setting up infrastructure on AWS, configuring AWS-Codepipeline for CI/CD, deploying application on ECS cluster and exposing the application by ALB to the external world.
 
